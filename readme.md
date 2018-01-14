@@ -933,7 +933,55 @@ create eslint:
   npm start     > npm run build     > npm run deploy
   development     production build    production deploy
 
+* Surge
+
+  [demo](http://healthy-trip.surge.sh/)
+
+  Step to install:
+  - Q1 - Project A launches
+  - Q2 - Project B launches
+  - Q3 - Add enhancements and bug fixes to your starter kit
+
+  How do we easily update starter kit in Project A & B?
+
+  * Update approaches
+      1. Yeoman: scaffolding tool
+          1. Commit to source control
+          2. Rerun(Scaffold) your generator in your existing project
+          3. Resolve manually
+      2. Github
+          1. Host on Github
+          2. Fork starter kit for new project
+          3. Pull changes from master
+      3. npm
+          1. Wrap/encapsulate your starter kit in your npm package
+          2. Update npm package to receive latest
   
+  * What can we centralized?
+    * Centralized
+        
+      | Item                             | Approach                     |
+      | -------------------------------- |:-----------------------------|
+      | buildScripts                     | npm package                  |
+      | npm scripts in package.json      | Call scripts in npm package  |
+      | webpack.config files             | npm package                  |
+      | .eslintrc                        | Create preset                |
+
+      example of npm starter kit: `create-react-app`
+      
+    * Decentralized
+
+      - .editorconfig
+      - .babelrc
+      - CI config (.travis.yml Appveyor.yml)
+      - Package references in package.json
+  
+  * Inspiration
+
+    - React: andrewhfarmer.com/starter-project/
+    - Angular: github.com/gianarb/awesome-angularjs
+
+    
 
 Notes:
 
