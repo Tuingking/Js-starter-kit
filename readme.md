@@ -920,6 +920,21 @@ create eslint:
   - Github Pages (Static only)
   - Surge (Static only)
 
+* Demo Heroku
+
+  1. heroku login
+  2. heroku apps:create node-api-example
+  3. heroku git:remote -a node-api-example
+  4. git push heroku master
+  5. goto: [website](https://node-api-example.herokuapp.com/)
+
+* Path to production
+
+  npm start     > npm run build     > npm run deploy
+  development     production build    production deploy
+
+  
+
 Notes:
 
 * npm start -s --> run in silince mode
