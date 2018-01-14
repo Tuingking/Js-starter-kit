@@ -875,8 +875,50 @@ create eslint:
 
   - Use `extract-text-webpack-plugin`
 
+* Error logging
+
+  Selection:
+  1. TrackJS
+  2. Sentry
+  3. New Relic
+  4. Raygun
+
+  What to look for JS Error logging?
+  * Error Metadata
+    - What browser the error occured in?
+    - Does it capture stack traces?
+    - Does it capture previous action that user was performing?
+    - Does it offer custom API so I can augment error logging with my own contextual data
+  * Notification and integrations
+    - Does it offer notification, so i can receive email when errors occur
+    - Can i integrate with popular platform like slack, so we notify there instead
+  * Analytics and filtering
+    - Can i filter out the noise by aggregating rules
+  * Pricing
 
 ## 13. Production Deploy
+
+* Why seperate the UI and API?
+
+  1. Simple, low risk, UI only deploys
+  2. Separates concerns
+      - Separate teams
+      - Less to understand
+      - Scale back-end separately
+  3. Cheap UI hosting
+  4. Serve UI via CDN
+  5. Use the API tech you want.
+
+* Cloud Hosting
+
+  - AWS
+  - Microsoft Azure
+  - Heroku
+  - Firebase
+  - Google Cloud Platform
+  - Netlify (Static only)
+  - Github Pages (Static only)
+  - Surge (Static only)
 
 Notes:
 
