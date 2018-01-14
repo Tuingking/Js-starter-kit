@@ -859,7 +859,18 @@ create eslint:
   1. Hard code
   2. Manipulate via Node
   3. html-webpack-plugin
-  
+
+* Cache busting
+
+  - Save HTTP Requests
+  - Force request for latest version
+  - How?
+    - Hash bundle filename: using `webpack-md5-hash` plugin
+      - `webpack-md5-hash` will create hash depend on the source code
+      - if any changes on the source code then the hash will change
+    - Generate HTML dynamiclly
+  - using `webpack
+
 ## 13. Production Deploy
 
 Notes:
