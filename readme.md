@@ -871,6 +871,11 @@ create eslint:
     - Generate HTML dynamiclly
   - using `webpack
 
+* Extract and minify CSS
+
+  - Use `extract-text-webpack-plugin`
+
+
 ## 13. Production Deploy
 
 Notes:
