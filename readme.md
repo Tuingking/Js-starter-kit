@@ -621,13 +621,13 @@ create eslint:
 
   5. **Where to place tests?**
 
-      - Centralized
+      - `Centralized`
         
         - Separate from source code
         - less "noise" in src folder
         - People don't want test deploy to production
       
-      - Alongside
+      - `Alongside`
 
         - Easy import: test path is relative to source code, if using `centralized` if the path changed than the test broken
         - Clear visibility
@@ -701,7 +701,7 @@ create eslint:
   ```yml
   language: node_js
   node_js:
-    - "8.9.4"
+    - "8"
   ```
   2. register TravisCI
   
@@ -713,7 +713,7 @@ create eslint:
   environment:
     matrix:
     # node.js
-    - nodejs_version: "6"
+    - nodejs_version: "8"
 
   # Install scripts. (runs after repo cloning)
   install:
@@ -739,10 +739,127 @@ create eslint:
 
 ## 10. HTTP Calls
 
+* HTTP call approches
+
+  1. Node
+      - http
+      - request
+  2. Browser
+      - XMLHttpRequest
+      - JQuery AJAX
+      - Fetch
+  3. Node & Browser
+      - isomorphic-fetch
+      - xhr
+      - SuperAgent
+      - Axios
+
+* Pollyfill
+
+  is a piece of code (or plugin) that provides the technology that you, the developer, expect the browser to provide natively.
+
+* How to implement pollyfill?
+
+
+  ```javascript
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js">
+  ```
+
+  Only send pollyfill to those who need it. in example bellow is `fetch`
+  ```javascript
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch">
+  ```
+
+* Why mock HTTP?
+
+  - Unit Testing
+  - Instant Response
+  - Keep working when service are down
+  - Rapid prototyping
+  - Avoid inter-team bottlenecks
+  - Work Offline
+
+* How to mock HTTP
+
+  - Nock
+  - Static JSON
+  - Create development webserver
+    - api-mock
+    - JSON server
+      - create fake database using static JSON
+      - create webservice that works with static JSON
+    - JSON Schema faker
+      - create different fake data
+    - Browsersync
+    - Express
+
+* Plan for mocking HTTP
+
+  1. Declare our schema:
+      - JSON schema faker - [repl](http://json-schema-faker.js.org/#gist/eb11f16c9edccf040c028dc8bd2b1756)
+  2. Generate Random data:
+      - [faker.js](https://rawgit.com/Marak/faker.js/master/examples/browser/index.html "Title")
+        - generating realistic name, address, email, etc
+      - [chance.js](http://chancejs.com/ "Title")
+        - generating realistic name, address, email, etc
+      - [randexp.js](http://fent.github.io/randexp.js/ "Title")
+        - create random data based on regular expression
+  3. Serve data via API
+      - JSON server
+        - support CRUD
+
+* JSON schema
+
+  standard for describing json data format
+
 ## 11. Project Structure
 
+1. Put your JS in .js file
+    - don't put your javascript alongside with html
+
+2. Consider organizing by feature
+
+  - Organize by file type (DON'T)
+    ```sh
+    /components
+    /data
+    /model
+    /views
+    ```
+  - Organize by feature (DO This)
+    ```sh
+    /authors
+    /courses
+    ```
+3. Extract Logic into `POJOs` (Plain Old Javascript Objects)
+  
+  - POJOs
+    - stands for `Plain Old Javascript Objects`
+    - Pure logic.
+    - No framework-specific code
+    - for example:
+      - If you working in React, much of your logic should exist outside of React components. This make your logic easy to test, easy to reuse, help minimize your ties to the framework you've selected.
+      - This minimize impact of switching to another framework.
+      - check the example from [react-slingshot](https://github.com/coryhouse/react-slingshot). Yang dimaksud POJOs ada di folder src/utils
 ## 12. Production Build
 
+* Minification
+
+  How does minification work?
+
+  - Shortens variable and function names
+  - Removes comments
+  - Removes whitespaces and new lines
+  - result in smaller file size which help speed's page load
+  - Webpack2 & Rollup bisa mengeliminasi code yang ga dipake (dinamakan Tree-shaking)
+  - Debug via sourcemap 
+
+* Referencing bundled assets in HTML
+
+  1. Hard code
+  2. Manipulate via Node
+  3. html-webpack-plugin
+  
 ## 13. Production Deploy
 
 Notes:
